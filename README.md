@@ -9,7 +9,7 @@
 - [x] zustand
 - [x] axios
 - [x] react-router
-- [ ] husky (woof)
+- [x] husky (woof)
 
 - [ ] Testing con:
 
