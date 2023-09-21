@@ -1,6 +1,7 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 import App from "./App";
 import Error from "./views/Error";
@@ -22,8 +23,17 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+    },
+  },
+});
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  <QueryClientProvider client={queryClient}>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+    <ReactQueryDevtools />
+  </QueryClientProvider>,
 );
